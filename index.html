@@ -1,15 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Educated Audio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educated Audio Chapters</title>
+  <style>
+    body { font-family: sans-serif; padding: 1rem; }
+    audio { width: 100%; margin-bottom: 1rem; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 0.5rem 0; }
+    a.chapter-link { text-decoration: none; color: #0066cc; cursor: pointer; }
+    a.chapter-link:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-  <h1>Listen to Educated Audio</h1>
-  <audio controls>
-    <source src="edu-part1.m4a" type="audio/mp4" />
+  <h1>Educated - Audio Chapters</h1>
+  <audio id="audio" controls>
+    <source src="edu-part1.m4a" type="audio/mp4">
     Your browser does not support the audio element.
   </audio>
+
+  <ul id="chapter-list">
+    <!-- Chapters will be inserted here -->
+  </ul>
+
+  <script>
+    const chapters = [
+      { time: "00:00:00", label: "Chapter 1" },
+      { time: "00:28:50", label: "Chapter 2" },
+      { time: "00:53:56", label: "Chapter 3" },
+      { time: "01:10:57", label: "Chapter 4" },
+      { time: "01:33:05", label: "Chapter 5" },
+      { time: "02:05:07", label: "Chapter 6" },
+      { time: "02:36:14", label: "Chapter 7" },
+      { time: "02:56:28", label: "Chapter 8" },
+      { time: "03:14:27", label: "Chapter 9" },
+      { time: "03:32:48", label: "Chapter 10" },
+      { time: "03:45:31", label: "Chapter 11" },
+      { time: "03:59:31", label: "Chapter 12" },
+      { time: "04:16:34", label: "Chapter 13" },
+      { time: "04:38:38", label: "Chapter 14" },
+      { time: "05:01:32", label: "Chapter 15" },
+      { time: "05:25:14", label: "Chapter 16" },
+      { time: "05:45:20", label: "Chapter 17" },
+      { time: "06:01:46", label: "Chapter 18" },
+      { time: "06:17:41", label: "Chapter 19" },
+      { time: "06:33:04", label: "Chapter 20" },
+      { time: "06:50:00", label: "Chapter 21" },
+      { time: "06:58:56", label: "Chapter 22" },
+      { time: "07:25:14", label: "Chapter 23" },
+      { time: "07:45:05", label: "Chapter 24" },
+      { time: "08:04:16", label: "Chapter 25" },
+      { time: "08:19:49", label: "Chapter 26" },
+      { time: "08:29:41", label: "Chapter 27" },
+      { time: "08:44:03", label: "Chapter 28" },
+      { time: "09:05:16", label: "Chapter 29" },
+      { time: "09:24:19", label: "Chapter 30" },
+      { time: "09:46:53", label: "Chapter 31" },
+      { time: "10:07:52", label: "Chapter 32" },
+      { time: "10:18:51", label: "Chapter 33" },
+      { time: "10:29:56", label: "Chapter 34" },
+      { time: "10:44:13", label: "Chapter 35" },
+      { time: "10:58:52", label: "Chapter 36" },
+      { time: "11:19:37", label: "Chapter 37" },
+      { time: "11:36:05", label: "Chapter 38" },
+      { time: "11:48:36", label: "Chapter 39" },
+      { time: "12:03:41", label: "Chapter 40" }
+    ];
+
+    const audio = document.getElementById('audio');
+    const list = document.getElementById('chapter-list');
+
+    function timeToSeconds(t) {
+      const parts = t.split(":").map(Number);
+      return parts[0] * 3600 + parts[1] * 60 + parts[2];
+    }
+
+    chapters.forEach(chap => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.textContent = chap.label + ' (' + chap.time + ')';
+      a.className = 'chapter-link';
+      a.onclick = () => {
+        audio.currentTime = timeToSeconds(chap.time);
+        audio.play();
+      };
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  </script>
 </body>
 </html>
