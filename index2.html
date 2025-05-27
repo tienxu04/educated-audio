@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Educated - Part 2</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    audio {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .chapter {
+      cursor: pointer;
+      color: #0645AD;
+      text-decoration: underline;
+      margin: 4px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Educated – Part 2</h1>
+  <audio id="audio" controls>
+    <source src="part2.m4a" type="audio/mp4" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <h2>Chapters</h2>
+  <div id="chapters"></div>
+
+  <script>
+    const chapters = [
+      { time: "00:14:06", label: "Chapter 13" },
+      { time: "00:36:10", label: "Chapter 14" },
+      { time: "00:59:04", label: "Chapter 15" },
+      { time: "01:22:46", label: "Chapter 16" },
+      { time: "01:42:52", label: "Chapter 17" },
+      { time: "01:59:18", label: "Chapter 18" },
+      { time: "02:15:13", label: "Chapter 19" },
+      { time: "02:30:36", label: "Chapter 20" },
+      { time: "02:47:31", label: "Chapter 21" },
+      { time: "02:56:27", label: "Chapter 22" },
+      { time: "03:22:46", label: "Chapter 23" },
+      { time: "03:42:37", label: "Chapter 24" },
+      { time: "04:01:48", label: "Chapter 25" }
+    ];
+
+    const audio = document.getElementById('audio');
+    const chaptersDiv = document.getElementById('chapters');
+
+    function timeToSeconds(timeStr) {
+      const [h, m, s] = timeStr.split(':').map(Number);
+      return h * 3600 + m * 60 + s;
+    }
+
+    chapters.forEach(chapter => {
+      const div = document.createElement('div');
+      div.textContent = chapter.label + " – " + chapter.time;
+      div.className = 'chapter';
+      div.onclick = () => {
+        audio.currentTime = timeToSeconds(chapter.time);
+        audio.play();
+      };
+      chaptersDiv.appendChild(div);
+    });
+  </script>
+</body>
+</html>
