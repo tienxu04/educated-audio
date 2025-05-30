@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Educated – Chapters 26–40</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+      color: #333;
+    }
+    audio {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 0.5rem 0;
+    }
+    a {
+      text-decoration: none;
+      color: #0056b3;
+      cursor: pointer;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Educated – Part 3</h1>
+  <audio id="player" controls>
+    <source src="part3.m4a" type="audio/mp4">
+    Your browser does not support the audio element.
+  </audio>
+
+  <ul id="chapters">
+    <li><a data-time="933">Chapter 26 – 15:33</a></li>
+    <li><a data-time="1525">Chapter 27 – 25:25</a></li>
+    <li><a data-time="2387">Chapter 28 – 39:47</a></li>
+    <li><a data-time="3660">Chapter 29 – 1:01:00</a></li>
+    <li><a data-time="4803">Chapter 30 – 1:20:03</a></li>
+    <li><a data-time="6157">Chapter 31 – 1:42:37</a></li>
+    <li><a data-time="7416">Chapter 32 – 2:03:36</a></li>
+    <li><a data-time="8075">Chapter 33 – 2:14:35</a></li>
+    <li><a data-time="8740">Chapter 34 – 2:25:40</a></li>
+    <li><a data-time="9597">Chapter 35 – 2:39:57</a></li>
+    <li><a data-time="10476">Chapter 36 – 2:54:36</a></li>
+    <li><a data-time="11721">Chapter 37 – 3:15:21</a></li>
+    <li><a data-time="12769">Chapter 38 – 3:32:49</a></li>
+    <li><a data-time="13520">Chapter 39 – 3:45:20</a></li>
+    <li><a data-time="14425">Chapter 40 – 4:00:25</a></li>
+  </ul>
+
+  <script>
+    const audio = document.getElementById('player');
+    document.querySelectorAll('a[data-time]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const time = parseInt(e.target.getAttribute('data-time'));
+        audio.currentTime = time;
+        audio.play();
+      });
+    });
+  </script>
+
+</body>
+</html>
